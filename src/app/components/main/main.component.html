@@ -1,5 +1,102 @@
-<p>
+<!-- <p>
   <button [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">
     Do it!
   </button>
-</p>
+</p> -->
+<div class="container">
+  <div class="row">
+          <div class="col-3 float-lg-right" *ngFor="let user of users ; index as i" >
+            <div class="card card-body mt-2">
+                <img src="https://fakeimg.pl/350x200/?text=World&font=lobster">
+                <div class="card-body">
+                    <p>
+                        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          Link with href
+                        </a>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          Button with data-target
+                        </button>
+                      </p>
+                      <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                      </div>
+                    <div class="panel-heading" role="tab" [id]="'heading'+i">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" 
+                            [href]="'#collapse'+i" aria-expanded="true" 
+                            [attr.aria-controls]="'collapse'+i">
+                                <h4 class="card-title"> {{user.name}} </h4>
+                            </a>
+                        </h4>
+                    </div>
+                    <div [id]="'collapse'+i" 
+                    class="panel-collapse collapse" 
+                    role="tabpanel" 
+                    [attr.aria-labelledby]="'heading'+i">
+                        <div class="panel-body">
+                            <p class="card-text">Email : {{user.email}}</p>
+                      <p class="card-text">Username : {{user.username}}</p>
+                      <p class="card-text">Address : {{user.address.city}} - {{user.address.street}} - {{user.address.suite}} - Zip : {{user.address.zipcode}}</p>
+                  
+                        </div>
+                    </div>
+                 
+                 
+                  
+                </div>
+            </div>
+           
+          </div>
+      
+  </div>
+  
+  <!-- (ngSubmit)="updateUser(1)" -->
+ <form class="form-inline" #f="ngForm" id="userForm">
+    <div class="form-group">
+      <label for="name"></label>
+      <input type="text" #n="ngModel" [(ngModel)]="user.name" name="name" id="name" class="form-control" placeholder="name" aria-describedby="name">
+      <small id="name" class="text-muted">{{user.name}}</small>
+    </div>
+    <div class="form-group">
+      <label for="username"></label>
+      <input type="text" #u="ngModel" [(ngModel)]="user.username" name="username" id="username" class="form-control" placeholder="username" aria-describedby="username">
+      <small id="username" class="text-muted">{{user.username}}</small>
+    </div>
+    <div class="form-group">
+      <label for="email"></label>
+      <input type="text" #e="ngModel" [(ngModel)]="user.email" name="email" id="email" class="form-control" placeholder="email" aria-describedby="email">
+      <small id="email" class="text-muted">{{user.email}}</small>
+    </div>
+    <div class="form-group">
+      <label for="street"></label>
+      <input type="text" #s="ngModel" [(ngModel)]="user.address.street" name="street" id="street" class="form-control" placeholder="street" aria-describedby="street">
+      <small id="street" class="text-muted">{{user.address.street}}</small>
+    </div>
+  </form>
+
+  <button type="button" form="userForm" (click)="updateUser(1)" class="btn btn-primary">Save</button> 
+<!-- 
+  <div class="form-group">
+    <label for="username">UserName</label>
+    <input type="text"
+      class="form-control"
+      name="username" 
+      id="username" 
+      aria-describedby="usernameId" 
+      placeholder="Enter user name"
+      #u="ngModel"
+      [(ngModel)]="username"
+      autocomplete="off"
+    >
+    <small id="usernameId" 
+      class="form-text text-muted"
+    >
+    you entered : {{u.value}}
+    </small>
+    <button type="button" class="btn btn-primary" (click)="updateUser(u.value)">Save</button>
+  </div> -->
+
+</div>
+
