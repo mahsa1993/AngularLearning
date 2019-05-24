@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { Form } from '@angular/forms';
+// import { BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-main',
@@ -34,8 +35,10 @@ export class MainComponent implements OnInit {
       bs: 'harness real-time e-markets'
     }
   };
+  // ac: AppComponent = new AppComponent();
   constructor(
-    private userSv: UserService
+    private userSv: UserService,
+    // public modalRef: BsModalRef
     ) { }
 
   ngOnInit() {
