@@ -10,16 +10,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AlertModule} from 'ngx-bootstrap/alert';  
+import { AlertModule} from 'ngx-bootstrap/alert';
 import { ButtonsModule} from 'ngx-bootstrap/buttons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap';
+import { ModalsComponent } from './components/modals/modals.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    NavbarComponent
+    NavbarComponent,
+    ModalsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,6 @@ import { CollapseModule } from 'ngx-bootstrap';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [MainComponent]
+  entryComponents: [ModalsComponent]
 })
 export class AppModule { }

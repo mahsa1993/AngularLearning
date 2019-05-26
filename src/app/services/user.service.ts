@@ -14,16 +14,22 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  getuser(): Observable<any> {
-    return this.http.get(this.endPoint + 'users');
+  getuser(): Observable<User[]> {
+    return this.http.get<User[]>(this.endPoint + 'users');
   }
 
   addUser(user: User) {
     return this.http.post(this.endPoint + 'users', user);
   }
 
-  updateUser(updatedUser: User, id: number) {
-    return this.http.put(`${this.endPoint}users/${id}`, updatedUser);
+  updateUser(updatedUser: User, id: number): Observable<{}> {
+   return this.http.post(this.endPoint + id, updatedUser);
   }
-
+  // UserService.fetch('https://jsonplaceholder.typicode.com/posts/1', {
+  //   method: 'PUT',
+  //   body: JSON.stringify({     
+  //   }) 
+  // })
+  // .then(response => response.json())
+  // .then(json => console.log(json))
 }

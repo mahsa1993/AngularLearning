@@ -3,6 +3,9 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { Form } from '@angular/forms';
 // import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalsComponent } from '../modals/modals.component';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +14,8 @@ import { Form } from '@angular/forms';
 })
 export class MainComponent implements OnInit {
  message = 'Hello . error occured .. blah blah blah';
-  users: User[] = [];
+ modalRef: BsModalRef;
+ users: User[] = [];
   user: User = {
     id: 1,
     name: 'Leanne Graham',
@@ -37,25 +41,29 @@ export class MainComponent implements OnInit {
   };
   // ac: AppComponent = new AppComponent();
   constructor(
-    private userSv: UserService,
+    private modalService: BsModalService,
+    private userSv: UserService
     // public modalRef: BsModalRef
-    ) { }
-
+    ) { }  
+     
   ngOnInit() {
     this.getUser();
   }
 
   getUser() {
-     this.userSv.getuser().subscribe(
-       response => {
-         this.users = response;
-       }
-     );
+     this.userSv.getuser()
+     .subscribe( data => this.users = data);  
   }
   updateUser(userid: number) {
-    debugger;
     this.userSv.updateUser(this.user, userid);
     this.getUser();
   }
-
+  openModal() {
+    this.modalRef = this.modalService.show(ModalsComponent, {
+      initialState: {
+        title: 'Modal title',
+        data: {}
+      }
+    });
+  }
 }
