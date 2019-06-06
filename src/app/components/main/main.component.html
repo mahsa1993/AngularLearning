@@ -6,6 +6,63 @@
 
 <div (click)="openModal()" class="btn btn-success">Modal Component</div>
 
+
+<div class="col-md-6 col-md-offset-3">
+    <h1>Home</h1>
+    <p>{{bodyText}}</p>
+    <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+    <button (click)="openModal('custom-modal-2')">Open Modal 2</button>
+</div>
+
+<app-modals id="custom-modal-1">
+    <div  class="modal" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('custom-modal-1');">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="closeModal('custom-modal-1');" mdbWavesEffect>Close</button>
+                <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+              </div>
+            </div>
+          </div>
+    </div>
+     
+        <div class="modal-background"></div>
+
+</app-modals>
+
+<app-modals id="custom-modal-2">
+    <div class="modal" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('custom-modal-2');">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+               Yes I DO
+              </div>
+              <div class="modal-footer">
+                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="closeModal('custom-modal-2');" mdbWavesEffect>Close</button>
+                <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+              </div>
+            </div>
+          </div>
+    </div>
+     
+        <div class="modal-background"></div>
+</app-modals>
+
 <div class="container">
   <div class="row">
           <div class="col-3 float-lg-right" *ngFor="let user of users ; index as i" >

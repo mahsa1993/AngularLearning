@@ -6,7 +6,7 @@ import { Form } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalsComponent } from '../modals/modals.component';
-
+import { ModalsService } from 'src/app/services/modals.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -39,15 +39,18 @@ export class MainComponent implements OnInit {
       bs: 'harness real-time e-markets'
     }
   };
+  bodyText: string;
   // ac: AppComponent = new AppComponent();
   constructor(
-    private modalService: BsModalService,
+    private  modalService: BsModalService,
+    private  modalsService: ModalsService,
     private userSv: UserService
     // public modalRef: BsModalRef
     ) { }  
      
   ngOnInit() {
     this.getUser();
+    this.bodyText = 'This text can be updated in modal 1';
   }
 
   getUser() {
@@ -58,12 +61,38 @@ export class MainComponent implements OnInit {
     this.userSv.updateUser(this.user, userid);
     this.getUser();
   }
-  openModal() {
-    this.modalRef = this.modalService.show(ModalsComponent, {
-      initialState: {
-        title: 'Modal title',
-        data: {}
-      }
-    });
-  }
+  // openModal() {
+  //   this.modalRef = this.modalService.show(ModalsComponent, {
+  //     initialState: {
+  //       title: 'Modal title',
+  //       data: {}
+  //     }
+  //   });
+  // }
+  // openModal(id: string) {
+  //    this.modalRef = this.modalsService.open(id, {
+  //    initialState: {
+  //       title: 'Modal title',
+  //       data: {}
+  //      }
+  //   });
+    // this.modalRef = this.modalService.show(ModalsComponent, {
+    //   initialState: {
+    //     title: 'Modal title',
+    //     data: {}
+    //   }
+      
+    // });
+    // this.modalsService.open(id);
+//}
+
+
+openModal(id: string) {
+  this.modalsService.open(id);
+}
+
+closeModal(id: string) {
+  this.modalsService.close(id);
+}
+
 }

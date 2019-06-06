@@ -15,6 +15,8 @@ import { ButtonsModule} from 'ngx-bootstrap/buttons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap';
 import { ModalsComponent } from './components/modals/modals.component';
+import { ModalsService } from './services/modals.service';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { ModalsComponent } from './components/modals/modals.component';
   }),
     CollapseModule.forRoot()
   ],
-  providers: [],
+  providers: [ModalsService],
   bootstrap: [AppComponent],
   entryComponents: [ModalsComponent]
 })
